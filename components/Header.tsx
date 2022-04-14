@@ -37,12 +37,6 @@ export const Header: React.FC<HeaderProps> = ({ background }) => {
   const [drawerOpened, setDrawerOpened] = useState(false);
   return (
     <MantineHeader height="100%">
-      {/* These hidden divs exist so that the backgrounds are prepared for conditional rendering. */}
-      {/* <div className="bg-cell1 h-96 hidden" />
-      <div className="bg-cell2 h-52 hidden" />
-      <div className="bg-cell3 hidden" />
-      <div className="bg-cell4 hidden" />
-      <div className="bg-cell5 hidden" /> */}
       <div
         className={`bg-cover w-screen max-w-full`}
         style={{
@@ -81,6 +75,12 @@ export const Header: React.FC<HeaderProps> = ({ background }) => {
           )}
         </div>
       </div>
+      {/* These hidden divs exist so that the backgrounds load faster. */}
+      <div className="bg-cell1 hidden" />
+      <div className="bg-cell2 hidden" />
+      <div className="bg-cell3 hidden" />
+      <div className="bg-cell4 hidden" />
+      <div className="bg-cell5 hidden" />
     </MantineHeader>
   );
 };
