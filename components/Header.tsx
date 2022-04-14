@@ -21,6 +21,15 @@ const links = [
 type HeaderProps = { background?: string };
 
 export const Header: React.FC<HeaderProps> = ({ background }) => {
+  useEffect(() => {
+    fetch("/cell1.jpg");
+    fetch("/cell2.jpg");
+    fetch("/cell3.jpg");
+    fetch("/cell4.jpg");
+    fetch("/cell5.jpg");
+    // Promise.all([...Array(5)].map((_,i) => fetch(`/cell${i+1}.jpg`)))
+  }, []);
+
   const isLargerThanMid = useMediaQuery("(min-width: 48em)");
 
   const [showHamburger, setShowHamburger] = useState(false);
@@ -75,12 +84,6 @@ export const Header: React.FC<HeaderProps> = ({ background }) => {
           )}
         </div>
       </div>
-      {/* These hidden divs exist so that the backgrounds load faster. */}
-      <div className="bg-cell1 hidden" />
-      <div className="bg-cell2 hidden" />
-      <div className="bg-cell3 hidden" />
-      <div className="bg-cell4 hidden" />
-      <div className="bg-cell5 hidden" />
     </MantineHeader>
   );
 };
