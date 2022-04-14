@@ -58,7 +58,6 @@ export const Header: React.FC<HeaderProps> = ({ background }) => {
             <>
               <ActionIcon
                 variant="outline"
-                color="white"
                 size="xl"
                 mx=".5rem"
                 onClick={() => setDrawerOpened(true)}
