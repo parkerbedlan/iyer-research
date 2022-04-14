@@ -22,12 +22,8 @@ type HeaderProps = { background?: string };
 
 export const Header: React.FC<HeaderProps> = ({ background }) => {
   useEffect(() => {
-    fetch("/cell1.jpg");
-    fetch("/cell2.jpg");
-    fetch("/cell3.jpg");
-    fetch("/cell4.jpg");
-    fetch("/cell5.jpg");
-    // Promise.all([...Array(5)].map((_,i) => fetch(`/cell${i+1}.jpg`)))
+    // fetching for faster loading
+    Promise.all([...Array(5)].map((_, i) => fetch(`/cell${i + 1}.jpg`)));
   }, []);
 
   const isLargerThanMid = useMediaQuery("(min-width: 48em)");
@@ -39,7 +35,6 @@ export const Header: React.FC<HeaderProps> = ({ background }) => {
 
   const [backgroundHeight, setBackgroundHeight] = useState("24rem");
   useEffect(() => {
-    // setBackgroundHeight(isLargerThanMid ? 96 : 52);
     setBackgroundHeight(isLargerThanMid ? "24rem" : "13rem");
   }, [isLargerThanMid]);
 
