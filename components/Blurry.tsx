@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { useIsPageRendered } from "../hooks/useIsPageRendered";
 
 type BlurryProps = {
@@ -20,6 +20,8 @@ export const Blurry: React.FC<BlurryProps> = ({
       }`}
     >
       {children}
+      {/* to fix tailwind dev rendering */}
+      <div className="hidden blur-sm blur-md blur-none blur-3xl duration-1000" />
     </div>
   );
 };

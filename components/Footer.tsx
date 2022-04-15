@@ -7,7 +7,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
   return (
     <MantineFooter height="100%">
       <div className="bg-gray-200">
-        <div className="h-12 py-10">
+        <div className="h-12 py-10 px-2">
           <h3 className="text-lg text-center ">
             Contact Dr. Iyer with any questions or to join the team.
           </h3>

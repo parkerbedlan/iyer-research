@@ -18,6 +18,7 @@ export const Layout: React.FC<LayoutProps> = ({
   background,
   message,
 }) => {
+  const isPageRendered = useIsPageRendered();
   return (
     <>
       <Head>
@@ -26,7 +27,7 @@ export const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header background={background} message={message} />
-      <Blurry blurLevel="sm">
+      <Blurry>
         <div className={`bg-gray-800`}>{children}</div>
       </Blurry>
       <Footer />

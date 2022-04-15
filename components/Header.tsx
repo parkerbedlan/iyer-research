@@ -40,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({ background, message }) => {
         }}
       >
         {message && (
-          <div className="flex justify-center items-center text-center md:bg-gray-600/50 p-10">
+          <div className="flex justify-center items-center text-center bg-goodgray p-10">
             <h1 className="font-bold text-white text-6xl">{message}</h1>
           </div>
         )}

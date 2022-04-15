@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        goodgray: "rgb(55 65 81 / 0.5)", // gray-700/50
+      },
       backgroundImage: {
         cell1: "url('/cell1.jpg')",
         cell2: "url('/cell2.jpg')",
