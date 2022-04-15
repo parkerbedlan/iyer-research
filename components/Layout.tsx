@@ -27,7 +27,7 @@ export const Layout: React.FC<LayoutProps> = ({
       </Head>
       <Header background={background} message={message} />
       <Blurry blurLevel="sm">
-        <div className={`bg-gray-100`}>{children}</div>
+        <div className={`bg-gray-800`}>{children}</div>
       </Blurry>
       <Footer />
     </>

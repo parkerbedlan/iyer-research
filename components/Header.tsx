@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({ background, message }) => {
     <MantineHeader height="100%">
       <NavBar />
       <div
-        className={`bg-cover w-screen max-w-full flex justify-center items-center`}
+        className={`bg-cover bg-fixed w-screen max-w-full flex justify-center items-center`}
         style={{
           height: isSmallScreen ? "13rem" : "24rem",
           backgroundImage: `url('/${background || "cell1"}.jpg')`,
