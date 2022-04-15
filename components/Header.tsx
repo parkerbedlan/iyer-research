@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Menu2 } from "tabler-icons-react";
 import { useIsSmallScreen } from "../hooks/useIsSmallScreen";
+import { Blurry } from "./Blurry";
 
 const links = [
   { href: "/", text: "Home" },
@@ -31,19 +32,21 @@ export const Header: React.FC<HeaderProps> = ({ background, message }) => {
   return (
     <MantineHeader height="100%">
       <NavBar />
-      <div
-        className={`bg-cover bg-fixed w-screen max-w-full flex justify-center items-center`}
-        style={{
-          height: isSmallScreen ? "13rem" : "24rem",
-          backgroundImage: `url('/${background || "cell1"}.jpg')`,
-        }}
-      >
-        {message && (
-          <div className="flex justify-center items-center text-center bg-goodgray p-10">
-            <h1 className="font-bold text-white text-6xl">{message}</h1>
-          </div>
-        )}
-      </div>
+      <Blurry>
+        <div
+          className={`bg-cover bg-fixed w-screen max-w-full flex justify-center items-center`}
+          style={{
+            height: isSmallScreen ? "13rem" : "24rem",
+            backgroundImage: `url('/${background || "cell1"}.jpg')`,
+          }}
+        >
+          {message && (
+            <div className="flex justify-center items-center text-center bg-goodgray p-10">
+              <h1 className="font-bold text-white text-6xl">{message}</h1>
+            </div>
+          )}
+        </div>
+      </Blurry>
     </MantineHeader>
   );
 };
