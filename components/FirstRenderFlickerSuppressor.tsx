@@ -19,7 +19,7 @@ export const FirstRenderFlickerSuppressor: React.FC<
 
   if (rendered) return null;
   return (
-    <div className="absolute h-screen w-screen max-w-full z-50 bg-gray-700 flex justify-center items-center">
+    <div className="absolute h-screen w-screen bg-gray-700 z-50 flex justify-center items-center">
       <Loader />
     </div>
   );

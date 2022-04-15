@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
 import Head from "next/head";
-import { useIsPageRendered } from "../hooks/useIsPageRendered";
+import React, { ReactNode } from "react";
 import { Blurry } from "./Blurry";
 import { FirstRenderFlickerSuppressor } from "./FirstRenderFlickerSuppressor";
+import { FlickerWrapper } from "./FlickerWrapper";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
 
 type LayoutProps = {
   children: ReactNode;
@@ -19,7 +19,6 @@ export const Layout: React.FC<LayoutProps> = ({
   background,
   message,
 }) => {
-  const isPageRendered = useIsPageRendered();
   return (
     <>
       <Head>
