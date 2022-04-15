@@ -4,7 +4,6 @@ import {
   DrawerProps,
   Header as MantineHeader,
 } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
 import { NextLink } from "@mantine/next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";

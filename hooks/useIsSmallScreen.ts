@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 
 export const useIsSmallScreen = () => {
   const query = useMediaQuery("(min-width: 48em)");
-  const [isLargerThanMid, setIsLargerThanMid] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(true);
   useEffect(() => {
-    setIsLargerThanMid(!query);
+    setIsSmallScreen(!query);
   }, [query]);
-  return isLargerThanMid;
+  return isSmallScreen;
 };
