@@ -39,6 +39,7 @@ export const Header: React.FC<HeaderProps> = ({ background }) => {
   }, [isLargerThanMid]);
 
   const [drawerOpened, setDrawerOpened] = useState(false);
+
   return (
     <MantineHeader height="100%">
       <div
@@ -50,7 +51,9 @@ export const Header: React.FC<HeaderProps> = ({ background }) => {
       >
         <div className="flex items-center space-between justify-between h-15 bg-black">
           <NextLink href="/">
-            <div className="border rounded-lg border-white m-2 p-2 hover:opacity-50 ease-in-out duration-300">
+            <div
+              className={`border rounded-lg border-white m-2 p-2 transition hover:opacity-50 duration-300`}
+            >
               <h1 className={`font-bold text-x text-white`}>Iyer Research</h1>
             </div>
           </NextLink>
@@ -95,14 +98,31 @@ const NavDrawer: React.FC<{
   opened: DrawerProps["opened"];
 }> = ({ onClose, opened }) => {
   const { pathname } = useRouter();
+
+  const [actualOpen, setActualOpen] = useState(opened);
+  useEffect(() => {
+    if (opened) {
+      setActualOpen(opened);
+    } else {
+      const timeout = setTimeout(() => setActualOpen(opened), 1000);
+      return clearTimeout(timeout);
+    }
+  }, [opened]);
+
   return (
     <Drawer
       position="right"
       title={<h1 className="font-bold text-xl">Pages</h1>}
       padding="lg"
       size="sm"
-      // color="black"
-      {...{ onClose, opened }}
+      transition="rotate-left"
+      transitionTimingFunction="ease"
+      transitionDuration={250}
+      className={`animate-slideFromRight transition-transform duration-500 ${
+        !opened && "translate-x-full"
+      }`}
+      opened={actualOpen}
+      {...{ onClose }}
     >
       <div className="flex flex-col">
         {links.map(({ href, text }, i) => (

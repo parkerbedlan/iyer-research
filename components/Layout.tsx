@@ -2,6 +2,8 @@ import React, { ReactNode } from "react";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import Head from "next/head";
+import { useIsPageRendered } from "../hooks/useIsPageRendered";
+import { Blurry } from "./Blurry";
 
 type LayoutProps = {
   children: ReactNode;
@@ -22,7 +24,9 @@ export const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header background={background} />
-      <div className="bg-gray-100">{children}</div>
+      <div className={`bg-gray-100`}>
+        <Blurry>{children}</Blurry>
+      </div>
       <Footer />
     </>
   );
