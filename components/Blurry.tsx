@@ -4,15 +4,20 @@ import { useIsPageRendered } from "../hooks/useIsPageRendered";
 type BlurryProps = {
   children: ReactNode;
   duration?: number;
+  blurLevel?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
 };
 
-export const Blurry: React.FC<BlurryProps> = ({ children, duration }) => {
+export const Blurry: React.FC<BlurryProps> = ({
+  children,
+  duration,
+  blurLevel,
+}) => {
   const isPageRendered = useIsPageRendered();
   return (
     <div
-      className={`transition duration-${
-        duration ? `[${duration}]` : "1000"
-      } blur-lg ${isPageRendered && "blur-none"}`}
+      className={`transition duration-${duration ? `[${duration}]` : "1000"} ${
+        !isPageRendered ? `blur-${blurLevel || "md"}` : "blur-none"
+      }`}
     >
       {children}
     </div>

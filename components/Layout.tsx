@@ -24,9 +24,9 @@ export const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header background={background} />
-      <div className={`bg-gray-100`}>
-        <Blurry>{children}</Blurry>
-      </div>
+      <Blurry blurLevel="sm">
+        <div className={`bg-gray-100`}>{children}</div>
+      </Blurry>
       <Footer />
     </>
   );
