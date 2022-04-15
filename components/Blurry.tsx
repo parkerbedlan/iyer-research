@@ -16,7 +16,7 @@ export const Blurry: React.FC<BlurryProps> = ({
   return (
     <div
       className={`transition duration-${duration ? `[${duration}]` : "1000"} ${
-        !isPageRendered ? `blur-${blurLevel || "md"}` : "blur-none"
+        !isPageRendered ? `blur-${blurLevel || "3xl"}` : "blur-none"
       }`}
     >
       {children}
