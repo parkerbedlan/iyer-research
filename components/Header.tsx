@@ -9,6 +9,7 @@ import { NextLink } from "@mantine/next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Menu2 } from "tabler-icons-react";
+import { useIsSmallScreen } from "../hooks/useIsSmallScreen";
 
 const links = [
   { href: "/", text: "Home" },
@@ -26,62 +27,58 @@ export const Header: React.FC<HeaderProps> = ({ background }) => {
     Promise.all([...Array(5)].map((_, i) => fetch(`/cell${i + 1}.jpg`)));
   }, []);
 
-  const isLargerThanMid = useMediaQuery("(min-width: 48em)");
-
-  const [showHamburger, setShowHamburger] = useState(false);
-  useEffect(() => {
-    setShowHamburger(!isLargerThanMid);
-  }, [isLargerThanMid]);
-
-  const [backgroundHeight, setBackgroundHeight] = useState("24rem");
-  useEffect(() => {
-    setBackgroundHeight(isLargerThanMid ? "24rem" : "13rem");
-  }, [isLargerThanMid]);
-
-  const [drawerOpened, setDrawerOpened] = useState(false);
+  const isSmallScreen = useIsSmallScreen();
 
   return (
     <MantineHeader height="100%">
+      <NavBar />
       <div
         className={`bg-cover w-screen max-w-full`}
         style={{
-          height: backgroundHeight,
+          height: isSmallScreen ? "13rem" : "24rem",
           backgroundImage: `url('/${background || "cell1"}.jpg')`,
         }}
-      >
-        <div className="flex items-center space-between justify-between h-15 bg-black">
-          <NextLink href="/">
-            <div
-              className={`border rounded-lg border-white m-2 p-2 transition hover:opacity-50 duration-300`}
-            >
-              <h1 className={`font-bold text-x text-white`}>Iyer Research</h1>
-            </div>
-          </NextLink>
-          {showHamburger ? (
-            <>
-              <ActionIcon
-                variant="outline"
-                size="xl"
-                mx=".5rem"
-                onClick={() => setDrawerOpened(true)}
-              >
-                <Menu2 color="white" />
-              </ActionIcon>
-              <NavDrawer
-                opened={drawerOpened}
-                onClose={() => setDrawerOpened(false)}
-              />
-            </>
-          ) : (
-            <div className="flex items-center">
-              {links.map((link, i) => (
-                <NavLink key={i} {...link} />
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
+      ></div>
     </MantineHeader>
+  );
+};
+
+const NavBar: React.FC<{}> = () => {
+  const showHamburger = useIsSmallScreen();
+  const [drawerOpened, setDrawerOpened] = useState(false);
+
+  return (
+    <div className="flex items-center space-between justify-between h-15 bg-black sticky top-0">
+      <NextLink href="/">
+        <div
+          className={`border rounded-lg border-white m-2 p-2 transition hover:opacity-50 duration-300`}
+        >
+          <h1 className={`font-bold text-x text-white`}>Iyer Research</h1>
+        </div>
+      </NextLink>
+      {showHamburger ? (
+        <>
+          <ActionIcon
+            variant="outline"
+            size="xl"
+            mx=".5rem"
+            onClick={() => setDrawerOpened(true)}
+          >
+            <Menu2 color="white" />
+          </ActionIcon>
+          <NavDrawer
+            opened={drawerOpened}
+            onClose={() => setDrawerOpened(false)}
+          />
+        </>
+      ) : (
+        <div className="flex items-center">
+          {links.map((link, i) => (
+            <NavLink key={i} {...link} />
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 

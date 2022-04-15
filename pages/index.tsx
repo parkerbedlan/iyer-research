@@ -2,7 +2,13 @@ import type { NextPage } from "next";
 import { Layout } from "../components/Layout";
 
 const HomePage: NextPage = () => {
-  return <Layout title="Home">This is the Home Page</Layout>;
+  return (
+    <Layout title="Home">
+      {[...Array(1000)].map((_, i) => (
+        <p key={i}>This is the Home Page.</p>
+      ))}
+    </Layout>
+  );
 };
 
 export default HomePage;
