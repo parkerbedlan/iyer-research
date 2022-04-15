@@ -19,9 +19,9 @@ const links = [
   { href: "/photos", text: "Lab Photos" },
 ];
 
-type HeaderProps = { background?: string };
+type HeaderProps = { background?: string; message?: string };
 
-export const Header: React.FC<HeaderProps> = ({ background }) => {
+export const Header: React.FC<HeaderProps> = ({ background, message }) => {
   useEffect(() => {
     // fetching for faster loading
     Promise.all([...Array(5)].map((_, i) => fetch(`/cell${i + 1}.jpg`)));
@@ -33,12 +33,18 @@ export const Header: React.FC<HeaderProps> = ({ background }) => {
     <MantineHeader height="100%">
       <NavBar />
       <div
-        className={`bg-cover w-screen max-w-full`}
+        className={`bg-cover w-screen max-w-full flex justify-center items-center`}
         style={{
           height: isSmallScreen ? "13rem" : "24rem",
           backgroundImage: `url('/${background || "cell1"}.jpg')`,
         }}
-      ></div>
+      >
+        {message && (
+          <div className="flex justify-center items-center text-center md:bg-gray-600/50 p-10">
+            <h1 className="font-bold text-white text-6xl">{message}</h1>
+          </div>
+        )}
+      </div>
     </MantineHeader>
   );
 };
@@ -99,10 +105,12 @@ const NavDrawer: React.FC<{
   const [actualOpen, setActualOpen] = useState(opened);
   useEffect(() => {
     if (opened) {
-      setActualOpen(opened);
+      setActualOpen(true);
     } else {
-      const timeout = setTimeout(() => setActualOpen(opened), 1000);
-      return clearTimeout(timeout);
+      const timeout = setTimeout(() => {
+        setActualOpen(false);
+      }, 400);
+      return () => clearTimeout(timeout);
     }
   }, [opened]);
 
@@ -119,7 +127,7 @@ const NavDrawer: React.FC<{
         !opened && "translate-x-full"
       }`}
       opened={actualOpen}
-      {...{ onClose }}
+      onClose={onClose}
     >
       <div className="flex flex-col">
         {links.map(({ href, text }, i) => (
