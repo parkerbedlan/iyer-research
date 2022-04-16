@@ -51,12 +51,12 @@ export const Header: React.FC<HeaderProps> = ({ background, message }) => {
   );
 };
 
-const NavBar: React.FC<{}> = () => {
+export const NavBar: React.FC<{}> = () => {
   const showHamburger = useIsSmallScreen();
   const [drawerOpened, setDrawerOpened] = useState(false);
 
   return (
-    <div className="flex items-center space-between justify-between h-15 bg-black sticky top-0">
+    <div className="flex items-center space-between justify-between h-15 bg-black sticky top-0 z-10">
       <NextLink href="/">
         <div
           className={`border rounded-lg border-white m-2 p-2 transition hover:opacity-50 duration-300`}
