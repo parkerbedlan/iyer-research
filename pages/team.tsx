@@ -6,7 +6,8 @@ import { UnderConstruction } from "../components/UnderConstruction";
 const TeamPage: NextPage = () => {
   return (
     <Layout title="Team" background="cell3" message="Meet the Team">
-      <PersonDisplay />
+      {/* <PersonDisplay /> */}
+      <UnderConstruction />
     </Layout>
   );
 };
