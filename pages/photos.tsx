@@ -1,7 +1,8 @@
-import { ActionIcon, Button, Image, Modal } from "@mantine/core";
+import { Image, Modal } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import type { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, ChevronsRight } from "tabler-icons-react";
+import { ChevronLeft, ChevronRight } from "tabler-icons-react";
 import { Layout } from "../components/Layout";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -27,6 +28,8 @@ const Gallery: React.FC<{ imgUrls: string[] }> = ({ imgUrls }) => {
   const [modalIndex, setModalIndex] = useState(0);
   const [modalOpened, setModalOpened] = useState(false);
 
+  const realHover = useMediaQuery("(hover: hover)");
+
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-5 place-content-center max-w-[100vw] gap-[1vw] p-[1vw]">
@@ -48,7 +51,9 @@ const Gallery: React.FC<{ imgUrls: string[] }> = ({ imgUrls }) => {
         withCloseButton={false}
       >
         <div
-          className="absolute left-0 bottom-0 z-50 w-1/2 h-full hover:cursor-pointer opacity-0 hover:opacity-50 bg-black flex justify-center items-center"
+          className={`absolute left-0 bottom-0 z-50 w-1/2 h-full hover:cursor-pointer opacity-0 focus:opactiy-0 bg-black flex justify-center items-center ${
+            realHover && "hover:opacity-50"
+          }`}
           onClick={() =>
             setModalIndex((modalIndex - 1 + imgUrls.length) % imgUrls.length)
           }
@@ -56,7 +61,9 @@ const Gallery: React.FC<{ imgUrls: string[] }> = ({ imgUrls }) => {
           <ChevronLeft size="50%" />
         </div>
         <div
-          className="absolute right-0 bottom-0 z-50 w-1/2 h-full hover:cursor-pointer opacity-0 hover:opacity-50 bg-black flex justify-center items-center"
+          className={`absolute right-0 bottom-0 z-50 w-1/2 h-full hover:cursor-pointer opacity-0 focus:opactiy-0 bg-black flex justify-center items-center ${
+            realHover && "hover:opacity-50"
+          }`}
           onClick={() =>
             setModalIndex((modalIndex + 1 + imgUrls.length) % imgUrls.length)
           }
@@ -66,7 +73,7 @@ const Gallery: React.FC<{ imgUrls: string[] }> = ({ imgUrls }) => {
         <Image
           src={imgUrls[modalIndex]}
           alt="current image"
-          className="flex-grow"
+          className="flex-grow select-none"
         />
       </Modal>
     </>
