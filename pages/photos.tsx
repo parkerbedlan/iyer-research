@@ -7,16 +7,9 @@ import { Layout } from "../components/Layout";
 
 // https://medium.com/@boris.poehland.business/next-js-api-routes-how-to-read-files-from-directory-compatible-with-vercel-5fb5837694b9
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const path = await import("path");
-  const dirRelativeToPublicFolder = "photos";
-  const dir = path.resolve("./public", dirRelativeToPublicFolder);
-
-  const fs = await import("fs");
-
-  const urls = fs
-    .readdirSync(dir)
-    .filter((file) => file.includes(".") && !file.includes("cropped"))
-    .map((file) => "/photos/" + file);
+  const urls = await fetch(
+    process.env.NEXT_PUBLIC_URL + "/api/getPhotoUrls"
+  ).then((res) => res.json());
 
   return { props: { imgUrls: urls } };
 };
