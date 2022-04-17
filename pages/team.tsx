@@ -62,7 +62,7 @@ const PersonDisplay: React.FC<{
       <div className="flex space-around items-start p-10">
         {imageSide === "left" && image}
         <div
-          className={`bg-gray-700 text-white py-2 px-4 w-50 z-20 md:mt-0`}
+          className={`bg-gray-700 text-white py-2 px-4 w-50 z-20`}
           style={{ marginTop: isSmallScreen ? mobileImgMargin || "14rem" : 0 }}
         >
           <h1 className="text-4xl font-semibold mb-4">{name}</h1>

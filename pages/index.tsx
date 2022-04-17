@@ -63,8 +63,13 @@ const PageDisplay: React.FC<{
       <div className="flex justify-center items-center bg-goodgray p-10">
         <h1 className="text-4xl font-semibold text-white">{bigText}</h1>
       </div>
-      <NextLink href={buttonHref}>
-        <Button variant="default" color="dark" className="mt-8 bg-goodgray">
+      <NextLink href={buttonHref} className="mt-8">
+        <Button
+          variant="default"
+          color="dark"
+          className="bg-goodgray"
+          size="lg"
+        >
           {buttonText}
         </Button>
       </NextLink>
