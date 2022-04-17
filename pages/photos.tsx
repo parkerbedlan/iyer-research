@@ -23,8 +23,6 @@ const PhotosPage: NextPage<{ imgUrls: string[] }> = ({ imgUrls }) => {
   );
 };
 
-// lg:h-48 lg:w-48 xl:h-60 xl:w-60
-
 const Gallery: React.FC<{ imgUrls: string[] }> = ({ imgUrls }) => {
   const [modalIndex, setModalIndex] = useState(0);
   const [modalOpened, setModalOpened] = useState(false);
@@ -44,16 +42,32 @@ const Gallery: React.FC<{ imgUrls: string[] }> = ({ imgUrls }) => {
           />
         ))}
       </div>
-      <Modal opened={modalOpened} onClose={() => setModalOpened(false)}>
-        {/* <div className="flex items-center justify-center min-h-fit min-w-fit"> */}
-        {/* <ChevronLeft /> */}
+      <Modal
+        opened={modalOpened}
+        onClose={() => setModalOpened(false)}
+        withCloseButton={false}
+      >
+        <div
+          className="absolute left-0 bottom-0 z-50 w-1/2 h-full hover:cursor-pointer opacity-0 hover:opacity-50 bg-black flex justify-center items-center"
+          onClick={() =>
+            setModalIndex((modalIndex - 1 + imgUrls.length) % imgUrls.length)
+          }
+        >
+          <ChevronLeft size="50%" />
+        </div>
+        <div
+          className="absolute right-0 bottom-0 z-50 w-1/2 h-full hover:cursor-pointer opacity-0 hover:opacity-50 bg-black flex justify-center items-center"
+          onClick={() =>
+            setModalIndex((modalIndex + 1 + imgUrls.length) % imgUrls.length)
+          }
+        >
+          <ChevronRight size="50%" />
+        </div>
         <Image
           src={imgUrls[modalIndex]}
           alt="current image"
           className="flex-grow"
         />
-        {/* <ChevronRight /> */}
-        {/* </div> */}
       </Modal>
     </>
   );
