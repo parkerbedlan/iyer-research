@@ -18,7 +18,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const PhotosPage: NextPage<{ imgUrls: string[] }> = ({ imgUrls }) => {
   return (
     <Layout title="Photos" background="cell5" message="Lab Photos">
-      {/* <pre className="text-white">{JSON.stringify(imgUrls, null, 2)}</pre> */}
       <Gallery imgUrls={imgUrls} />
     </Layout>
   );
@@ -32,7 +31,7 @@ const Gallery: React.FC<{ imgUrls: string[] }> = ({ imgUrls }) => {
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-5 place-content-center max-w-[100vw] gap-[1vw] pt-[1vw] pl-[1vw]">
+      <div className="grid grid-cols-2 md:grid-cols-5 place-content-center max-w-[100vw] gap-[1vw] p-[1vw]">
         {imgUrls.map((url, i) => (
           <div
             key={url}
