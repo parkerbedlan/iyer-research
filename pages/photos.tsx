@@ -16,7 +16,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const PhotosPage: NextPage<{ imgUrls: string[] }> = ({ imgUrls }) => {
   return (
-    <Layout title="Photos" background="cell5" message="Lab Photos">
+    <Layout
+      title="Photos"
+      background="/photos/iyer-photos-tab.png"
+      message="Lab Photos"
+    >
       <Gallery imgUrls={imgUrls} />
     </Layout>
   );

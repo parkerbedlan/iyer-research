@@ -1,12 +1,17 @@
 import { Image } from "@mantine/core";
 import type { NextPage } from "next";
 import { ReactNode } from "react";
+import { Divider, PageDisplay } from ".";
 import { Layout } from "../components/Layout";
 import { useIsSmallScreen } from "../hooks/useIsSmallScreen";
 
 const TeamPage: NextPage = () => {
   return (
-    <Layout title="Team" background="cell3" message="Meet the Team">
+    <Layout
+      title="Team"
+      background="/photos/iyer-teams-tab.png"
+      message="Meet the Team"
+    >
       <PersonDisplay
         imageSide="right"
         name="Dr. Jyoti Iyer"
@@ -15,34 +20,56 @@ const TeamPage: NextPage = () => {
       />
       <PersonDisplay
         imageSide="left"
-        name="Amy Smith"
-        blurb="Amy is a junior Biochemistry major with a minor in Business Administration. She is from Wentzville, Missouri and plans on going to medical school after graduation and becoming a forensic pathologist. She loves toasted ravioli and wants to visit Italy someday."
-        imgUrl="/photos/portraits/amy-smith.jpg"
-      />
-      <PersonDisplay
-        imageSide="right"
-        name="Mary Bergwell"
-        blurb="Mary is a junior Biology major with minors in Spanish and Chemistry. She is from Overland Park, Kansas and hopes to pursue an MD/PhD program in microbiology or neuroscience. She loves Game of Thrones seasons 1-7, playing Sims 4, and finding the best coffee in town."
-        imgUrl="/photos/portraits/mary-bergwell.jpg"
-      />
-      <PersonDisplay
-        imageSide="left"
-        name="Danita Mathew"
-        blurb="Danita  is a sophomore Biochemistry major with minors in Neuroscience and Spanish. She is from Garland, Texas and plans on attending medical school as an M.D./Ph.D. candidate. She loves singing and attempting to cook!"
-        imgUrl="/photos/portraits/danita-mathew.jpg"
-      />
-      <PersonDisplay
-        imageSide="right"
         name="Ellie Smith"
         blurb="Ellie is a sophomore biochemistry major. Her goal following graduation is to earn a PhD in biochemistry to pursue a career in research. When she's not working in the lab, Ellie enjoys baking and volunteering at animal rescues."
         imgUrl="/photos/portraits/ellie-smith.jpg"
         mobileImgMargin="18rem"
       />
+      <PersonDisplay
+        imageSide="right"
+        name="Ramon Duran"
+        blurb="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+        rutrum ante vel consequat ultrices. Vivamus non odio sed arcu
+        pulvinar aliquam. Aliquam id justo ante. Nulla rhoncus fermentum
+        justo in luctus. Praesent porttitor lorem vitae aliquam interdum.
+        Etiam sed volutpat quam. Duis blandit vitae ligula vitae imperdiet.
+        Vivamus bibendum massa at mi dignissim, in congue tellus tempus."
+        imgUrl="https://placekitten.com/300/300"
+      />
+      <PersonDisplay
+        imageSide="left"
+        name="Carter Dierlam"
+        blurb="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+        rutrum ante vel consequat ultrices. Vivamus non odio sed arcu
+        pulvinar aliquam. Aliquam id justo ante. Nulla rhoncus fermentum
+        justo in luctus. Praesent porttitor lorem vitae aliquam interdum.
+        Etiam sed volutpat quam. Duis blandit vitae ligula vitae imperdiet.
+        Vivamus bibendum massa at mi dignissim, in congue tellus tempus."
+        imgUrl="https://placekitten.com/301/301"
+      />
+      <PersonDisplay
+        imageSide="right"
+        name="Erin Haastrup"
+        blurb="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+        rutrum ante vel consequat ultrices. Vivamus non odio sed arcu
+        pulvinar aliquam. Aliquam id justo ante. Nulla rhoncus fermentum
+        justo in luctus. Praesent porttitor lorem vitae aliquam interdum.
+        Etiam sed volutpat quam. Duis blandit vitae ligula vitae imperdiet.
+        Vivamus bibendum massa at mi dignissim, in congue tellus tempus."
+        imgUrl="https://placekitten.com/302/302"
+      />
+      {/* <Divider /> */}
+      <PageDisplay
+        bigText="Meet the alumni!"
+        buttonText="Alumni"
+        buttonHref="/alumni"
+        bgUrl="/photos/1-cropped.jpeg"
+      />
     </Layout>
   );
 };
 
-const PersonDisplay: React.FC<{
+export const PersonDisplay: React.FC<{
   imageSide?: "left" | "right";
   name: string;
   blurb: string | ReactNode;

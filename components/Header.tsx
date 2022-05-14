@@ -4,6 +4,7 @@ import {
   DrawerProps,
   Header as MantineHeader,
 } from "@mantine/core";
+import { useElementSize, useHover } from "@mantine/hooks";
 import { NextLink } from "@mantine/next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -11,10 +12,23 @@ import { Menu2 } from "tabler-icons-react";
 import { useIsSmallScreen } from "../hooks/useIsSmallScreen";
 import { Blurry } from "./Blurry";
 
-const links = [
+type Link = {
+  href: string;
+  text: string;
+  dropdownItems?: Link[];
+};
+
+const links: Link[] = [
   { href: "/", text: "Home" },
   { href: "/projects", text: "Projects" },
-  { href: "/team", text: "Team" },
+  {
+    href: "/team",
+    text: "Team",
+    dropdownItems: [
+      { href: "/team", text: "Current Team" },
+      { href: "/alumni", text: "Alumni" },
+    ],
+  },
   { href: "/publications", text: "Publications" },
   { href: "/photos", text: "Lab Photos" },
 ];
@@ -34,10 +48,10 @@ export const Header: React.FC<HeaderProps> = ({ background, message }) => {
       <NavBar />
       <Blurry>
         <div
-          className={`bg-cover bg-fixed w-screen max-w-full flex justify-center items-center`}
+          className={`bg-cover bg-fixed w-screen max-w-full flex justify-center items-center bg-center`}
           style={{
             height: isSmallScreen ? "13rem" : "24rem",
-            backgroundImage: `url('/${background || "cell1"}.jpg')`,
+            backgroundImage: `url('${background || "/cell1.jpg"}')`,
           }}
         >
           {message && (
@@ -56,7 +70,7 @@ export const NavBar: React.FC<{}> = () => {
   const [drawerOpened, setDrawerOpened] = useState(false);
 
   return (
-    <div className="flex items-center space-between justify-between h-15 bg-black sticky top-0 z-10">
+    <div className="flex items-stretch space-between justify-between h-15 bg-black sticky top-0 z-20">
       <NextLink href="/">
         <div
           className={`border rounded-lg border-white m-2 p-2 transition hover:opacity-50 duration-300`}
@@ -70,6 +84,7 @@ export const NavBar: React.FC<{}> = () => {
             variant="outline"
             size="xl"
             mx=".5rem"
+            my="auto"
             onClick={() => setDrawerOpened(true)}
           >
             <Menu2 color="white" />
@@ -80,21 +95,42 @@ export const NavBar: React.FC<{}> = () => {
           />
         </>
       ) : (
-        <div className="flex items-center">
-          {links.map((link, i) => (
-            <NavLink key={i} {...link} />
-          ))}
+        <div>
+          <div className="flex items-center h-full">
+            {links.map((link, i) => (
+              <NavLink key={i} {...link} />
+            ))}
+          </div>
         </div>
       )}
     </div>
   );
 };
 
-const NavLink: React.FC<{ text: string; href: string }> = ({ text, href }) => {
+const NavLink: React.FC<Link> = ({ text, href, dropdownItems }) => {
+  const { hovered, ref } = useHover();
   return (
-    <h2 className="text-white text-lg mx-6 hover:opacity-50 transition-all ease-in-out duration-300 hover:text-2xl">
-      <NextLink href={href}>{text}</NextLink>
-    </h2>
+    <div
+      ref={ref}
+      className="text-white text-lg mx-6 transition-all ease-in-out duration-300 relative hover:text-2xl hover:opacity-50 h-full grid items-center"
+    >
+      <div className="m-auto">
+        <NextLink href={href}>{text}</NextLink>
+      </div>
+      {dropdownItems && (
+        <div
+          className={`absolute -z-50 top-full flex flex-col space-y-3 mt-3 bg-black w-max transition-transform duration-500 ${
+            hovered ? "-translate-y-3" : `-translate-y-[100vh]`
+          }`}
+        >
+          {dropdownItems.map((item) => (
+            <div key={item.href}>
+              <NextLink href={item.href}>{item.text}</NextLink>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 

@@ -7,9 +7,13 @@ import { Layout } from "../components/Layout";
 
 const ProjectsPage: NextPage = () => {
   return (
-    <Layout title="Projects" background="cell2" message="Our Projects">
+    <Layout
+      title="Projects"
+      background="/photos/iyer-projects-preview.png"
+      message="Our Projects"
+    >
       <Divider />
-      <ProjectDisplay
+      {/* <ProjectDisplay
         bigText="Microcephaly Project"
         smallText="Primary microcephaly is a debilitating neurological disorder. Babies
         that are born with this disease have smaller brains and display severe
@@ -19,8 +23,8 @@ const ProjectsPage: NextPage = () => {
         their relationship to microcephaly."
         tinyText="Photo by Amy Smith"
         bgUrl="/photos/microcephaly.jpg"
-      />
-      <Divider />
+      /> */}
+      {/* <Divider /> */}
       <ProjectDisplay
         bigText="CHD-1 Project"
         smallText={
@@ -35,6 +39,27 @@ const ProjectsPage: NextPage = () => {
       />
       <Divider />
       <ProjectDisplay
+        bigText="Investigating the Molecular Mechanisms of Centrosome Duplication"
+        smallText={
+          <>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+            rutrum ante vel consequat ultrices. Vivamus non odio sed arcu
+            pulvinar aliquam. Aliquam id justo ante. Nulla rhoncus fermentum
+            justo in luctus. Praesent porttitor lorem vitae aliquam interdum.
+            Etiam sed volutpat quam. Duis blandit vitae ligula vitae imperdiet.
+            Vivamus bibendum massa at mi dignissim, in congue tellus tempus.
+            Aenean ac tortor vel tellus bibendum lobortis. Quisque fermentum
+            purus id urna tincidunt efficitur. Etiam vel dictum elit.
+            Pellentesque rhoncus nunc in ipsum molestie pharetra. Integer lacus
+            leo, aliquet sit amet laoreet non, varius sit amet nibh.
+          </>
+        }
+        tinyText="Photo by Holly Lakin"
+        bgUrl="/photos/iyer-home-tab.png"
+        bgFixed
+      />
+      <Divider />
+      {/* <ProjectDisplay
         bigText="Drug Screening Project"
         smallText={
           <>
@@ -47,7 +72,7 @@ const ProjectsPage: NextPage = () => {
         tinyText="Photo by Holly Lakin"
         bgUrl="/photos/drug-screening.jpg"
         bgFixed
-      />
+      /> */}
     </Layout>
   );
 };

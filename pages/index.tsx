@@ -7,13 +7,17 @@ import { useIsSmallScreen } from "../hooks/useIsSmallScreen";
 const HomePage: NextPage = () => {
   const isSmallScreen = useIsSmallScreen();
   return (
-    <Layout title="Home" message="The Iyer Lab">
+    <Layout
+      title="Home"
+      message="The Iyer Lab"
+      background="/photos/iyer-home-tab.png"
+    >
       <Divider />
       <PageDisplay
         bigText="Check out our projects!"
         buttonText="Projects"
         buttonHref="/projects"
-        bgUrl="/photos/9.jpg"
+        bgUrl="/photos/iyer-projects-tab.png"
         bgFixed={!isSmallScreen}
       />
       <Divider />
@@ -36,7 +40,7 @@ const HomePage: NextPage = () => {
         bigText="Browse our photo gallery!"
         buttonText="Photos"
         buttonHref="/photos"
-        bgUrl="/photos/13.jpg"
+        bgUrl="/photos/iyer-photos-preview.png"
         bgFixed
       />
     </Layout>
@@ -45,7 +49,7 @@ const HomePage: NextPage = () => {
 
 export const Divider = () => <div className="h-20 bg-transparent" />;
 
-const PageDisplay: React.FC<{
+export const PageDisplay: React.FC<{
   bigText: string;
   buttonText: string;
   buttonHref: string;
