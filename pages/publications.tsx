@@ -1,10 +1,8 @@
 import { Button } from "@mantine/core";
-import { NextLink } from "@mantine/next";
 import type { NextPage } from "next";
 import { ReactNode } from "react";
 import { Divider } from ".";
 import { Layout } from "../components/Layout";
-import { UnderConstruction } from "../components/UnderConstruction";
 
 const PublicationsPage: NextPage = () => {
   return (
