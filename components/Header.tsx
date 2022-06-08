@@ -119,9 +119,9 @@ const NavLink: React.FC<Link> = ({ text, href, dropdownItems }) => {
       </div>
       {dropdownItems && (
         <div
-          className={`absolute -z-50 top-full flex flex-col space-y-3 mt-3 bg-black w-max transition-transform duration-75 ${
+          className={`absolute -z-50 top-full flex flex-col space-y-3 mt-3 bg-black w-max ${
             hovered ? "-translate-y-3" : `-translate-y-[100vh]`
-          }`}
+          }`} //transition-transform
         >
           {dropdownItems.map((item) => (
             <div key={item.href}>
