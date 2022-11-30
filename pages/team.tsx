@@ -58,13 +58,9 @@ const TeamPage: NextPage = () => {
       <PersonDisplay
         imageSide="left"
         name="Peter Nunan"
-        blurb="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-        rutrum ante vel consequat ultrices. Vivamus non odio sed arcu
-        pulvinar aliquam. Aliquam id justo ante. Nulla rhoncus fermentum
-        justo in luctus. Praesent porttitor lorem vitae aliquam interdum.
-        Etiam sed volutpat quam. Duis blandit vitae ligula vitae imperdiet.
-        Vivamus bibendum massa at mi dignissim, in congue tellus tempus."
-        imgUrl="https://placekitten.com/400"
+        blurb="Peter received a Bachelor of Science in Microbiology and a Bachelor of Science in Plant Biology from Oklahoma State University. He is working as a Research Technician here in hopes to pursue graduate school in the future. While not working, Peter enjoys cooking, staying up to date on pop culture, and hanging out with friends."
+        imgUrl="/photos/portraits/peter-nunan.jpg"
+        mobileImgMargin="80vw"
       />
       {/* <Divider /> */}
       <PageDisplay
