@@ -52,13 +52,8 @@ const TeamPage: NextPage = () => {
       <PersonDisplay
         imageSide="right"
         name="Erin Haastrup"
-        blurb="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-        rutrum ante vel consequat ultrices. Vivamus non odio sed arcu
-        pulvinar aliquam. Aliquam id justo ante. Nulla rhoncus fermentum
-        justo in luctus. Praesent porttitor lorem vitae aliquam interdum.
-        Etiam sed volutpat quam. Duis blandit vitae ligula vitae imperdiet.
-        Vivamus bibendum massa at mi dignissim, in congue tellus tempus."
-        imgUrl="https://placekitten.com/302/302"
+        blurb="Erin received a Bachelor of Science in Microbiology at the University of Oklahoma. She is a research technician for the Iyer Lab and plans on pursuing a PhD in the future. She enjoys gardening and talking about her cat, Blue."
+        imgUrl="/photos/portraits/erin-haastrup.jpg"
       />
       {/* <Divider /> */}
       <PageDisplay
@@ -82,8 +77,7 @@ export const PersonDisplay: React.FC<{
     <Image
       src={imgUrl}
       alt={name}
-      className="mx-4 min-w-[300px] max-w-[80vw] absolute sm:relative z-10"
-      // max-w-[50%] md:max-w-none
+      className="mx-4 min-w-[300px] max-w-[80vw] md:max-w-[40vw] absolute sm:relative z-10"
     />
   );
   const isSmallScreen = useIsSmallScreen();
