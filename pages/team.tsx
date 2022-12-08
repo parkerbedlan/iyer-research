@@ -40,12 +40,7 @@ const TeamPage: NextPage = () => {
       <PersonDisplay
         imageSide="left"
         name="Carter Dierlam"
-        blurb="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-        rutrum ante vel consequat ultrices. Vivamus non odio sed arcu
-        pulvinar aliquam. Aliquam id justo ante. Nulla rhoncus fermentum
-        justo in luctus. Praesent porttitor lorem vitae aliquam interdum.
-        Etiam sed volutpat quam. Duis blandit vitae ligula vitae imperdiet.
-        Vivamus bibendum massa at mi dignissim, in congue tellus tempus."
+        blurb="Biochemistry major with minors in biology and psychology."
         imgUrl="/photos/portraits/carter-dierlam.png"
         mobileImgMargin="16rem"
       />
